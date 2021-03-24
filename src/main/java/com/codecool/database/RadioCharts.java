@@ -1,10 +1,7 @@
 package com.codecool.database;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Collection;
 
 public class RadioCharts {
@@ -35,7 +32,7 @@ public class RadioCharts {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String query = "select song from music_broadcast where max(times_aired)";
             Statement statement = connection.createStatement();
-            statement.execute(query);
+            ResultSet rs = statement.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,9 +42,8 @@ public class RadioCharts {
     public String getMostActiveArtist() {
         String artistName="";
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "select artist from music_broadcast where max(times_aired)";
+            String query = "select artist from music_broadcast where";
             Statement statement = connection.createStatement();
-            statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }

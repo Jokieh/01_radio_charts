@@ -17,15 +17,6 @@ public class RadioCharts {
     }
 
 
-    Connection conn;
-    {
-        try {
-            conn = DriverManager.getConnection(url,username,password);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
 
     public String getMostPlayedSong () {
         String songName="";
